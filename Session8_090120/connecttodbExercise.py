@@ -32,6 +32,15 @@ cursor = testConnect.cursor()
 #insert_query = """ INSERT INTO Userdata (ID, users, password) VALUES (3, 'Henna Bree', 'abcd'), (4, 'Kiaan Logan', 'efgh')"""
 #cursor.execute(insert_query)
 
+#using executemany() which is a method, to fetch multiple elements and insert into a table
+users = (
+    (5, 'Nellia Ho', "12ab"),
+    (6, 'Deshawna Ng', "34cd")
+)
+
+insert_query = """ INSERT INTO Userdata (ID, users, password) VALUES (%s, %s, %s)"""
+cursor.executemany(insert_query, users)
+
 #FETCH RESULT
 select_query = "select * from Userdata ORDER BY users"
 cursor.execute(select_query)
