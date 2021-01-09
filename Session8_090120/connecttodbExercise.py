@@ -38,8 +38,8 @@ users = (
     (6, 'Deshawna Ng', "34cd")
 )
 
-insert_query = """ INSERT INTO Userdata (ID, users, password) VALUES (%s, %s, %s)"""
-cursor.executemany(insert_query, users)
+#insert_query = """ INSERT INTO Userdata (ID, users, password) VALUES (%s, %s, %s)"""
+#cursor.executemany(insert_query, users)
 
 #FETCH RESULT
 select_query = "select * from Userdata ORDER BY users"
@@ -49,7 +49,9 @@ data_fetch_from_db = cursor.fetchall()
 for data in data_fetch_from_db:
     print("Ordered Date: ", data)
 #print("data from table", data_fetch_from_db)
-
+output =open("Userdata.csv", 'w')
+cur = testConnect.cursor()
+cursor.copy_to(output, 'Userdata', sep="|")
 
 if (testConnect):
     print("Connected to Database")    
