@@ -42,17 +42,27 @@ data_fetch_from_db = todoCursor.fetchall()
 for data in data_fetch_from_db:
     print("Today: ", data)
 
-
+import csv
 select_query_high = "SELECT * from TodoList WHERE priority = 'High'"
 todoCursor.execute(select_query_high)
 data_fetch_from_db = todoCursor.fetchall()
 #print data one by one
 for data in data_fetch_from_db:
+    output = open("todo.csv","w")
+    cur = todoConnect.cursor()
+    todoCursor.copy_to(output, "TodoList", sep="|")
     print("High Priority: ", data)
 
 
-output = open("todo.csv", 'w')
-cur = todoConnect.cursor()
-todoCursor.copy_to(output, 'TodoList', sep="|")
+
+
+##output = open("todo.csv", 'w')
+#cur = todoConnect.cursor()
+#todoCursor.copy_to(output, 'TodoList', sep="|")
+
+
+
+
+
 
 
