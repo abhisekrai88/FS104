@@ -12,18 +12,21 @@ testConnect = psycopg2.connect(user="postgres",
 # You can create Cursor object using the cursor() method of the Connection object/class.
 cursor = testConnect.cursor()
     # SQL query to create a new table
-create_table_query = '''CREATE TABLE Userdata
-          (ID INT PRIMARY KEY     NOT NULL,
-          users           TEXT    NOT NULL,
-          password         character varying); '''
+#create_table_query = '''CREATE TABLE Userdata
+          #(ID INT PRIMARY KEY     NOT NULL,
+         # users           TEXT    NOT NULL,
+         # password         character varying); '''
 # Execute a command: this creates a new table
-cursor.execute(create_table_query)
-testConnect.commit()
+#cursor.execute(create_table_query)
+#testConnect.commit()
 
-insert_query = """ INSERT INTO Userdata (ID, users, password) VALUES (1, 'Abhisek Rai', '1234')"""
-cursor.execute(insert_query)
+#insert_query = """ INSERT INTO Userdata (ID, users, password) VALUES (1, 'Abhisek Rai', '1234')"""
+#cursor.execute(insert_query)
+
+update_query = """ UPDATE Userdata SET ID = '2' WHERE ID = '1'"""
+cursor.execute(update_query)
 testConnect.commit()
-print("1 Record inserted successfully")
+print("1 Record updated successfully")
 
 
 if (testConnect):
