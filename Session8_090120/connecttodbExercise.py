@@ -36,6 +36,7 @@ cursor = testConnect.cursor()
 select_query = "select * from Userdata ORDER BY users"
 cursor.execute(select_query)
 data_fetch_from_db = cursor.fetchall()
+#print data one by one
 for data in data_fetch_from_db:
     print("Ordered Date: ", data)
 #print("data from table", data_fetch_from_db)
